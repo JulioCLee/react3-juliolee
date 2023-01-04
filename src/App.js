@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { BaseColaboradores } from './Datos/BaseColaboradores'
+import Formulario from "./Componentes/Formulario";
+import ListaColaboradores from "./Componentes/ListaColaboradores";
+import Header from './Componentes/Header';
 
 function App() {
+
+  const [lstColaboradores, setLstColaboradores] = useState(BaseColaboradores)
+  const [valorDeLaCaja, setValorDeLaCaja] = useState('');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header
+      setValorDeLaCaja={setValorDeLaCaja}
+      ></Header>
+      <Formulario
+      lstColaboradores={lstColaboradores}
+      setLstColaboradores={setLstColaboradores}
+      >
+      </Formulario>
+      <hr></hr>
+      <ListaColaboradores
+      valorDeLaCaja={valorDeLaCaja}
+      lstColaboradores={lstColaboradores}>
+      </ListaColaboradores>
     </div>
   );
 }
